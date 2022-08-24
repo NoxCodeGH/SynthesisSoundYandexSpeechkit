@@ -1,23 +1,23 @@
-=== Общее ===
-Проект создан для взаимодействия с сервисом Yandex SpeechKit TTS.
+#### РћРїРёСЃР°РЅРёРµ <br/>
+- РџСЂРѕРµРєС‚ СЃРѕР·РґР°РЅ РґР»СЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ СЃРµСЂРІРёСЃРѕРј Yandex SpeechKit TTS.
 
-=== SynthesisSoundYandexSpeechkit ===
-Библиотека основного взаимодействия с сервисом.
+#### SynthesisSoundYandexSpeechkit <br/>
+- Р‘РёР±Р»РёРѕС‚РµРєР° РѕСЃРЅРѕРІРЅРѕРіРѕ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ СЃРµСЂРІРёСЃРѕРј.
 
-=== SynthesisSoundYandexSpeechkitConsole ===
-Консольное управление запросами.
+#### SynthesisSoundYandexSpeechkitConsole <br/>
+- РљРѕРЅСЃРѕР»СЊРЅРѕРµ СѓРїСЂР°РІР»РµРЅРёРµ Р·Р°РїСЂРѕСЃР°РјРё.
 
-=== Быстрый старт ===
-1. Скачать архив приложения;
-2. В файле "Config.json" указать "IamToken" и "FolderId";
-3. В файле "ConfigSynthesis.json" указать параметры синтеза, конвертации (если необходимо) и хранения файлов синтеза.
-4. В файле "Texts.txt" указать текст синтеза (каждая строка идёт отдельным запросом);
-5. Запустить.
+#### Р‘С‹СЃС‚СЂС‹Р№ СЃС‚Р°СЂС‚ <br/>
+1. РЎРєР°С‡Р°С‚СЊ Р°СЂС…РёРІ РїСЂРёР»РѕР¶РµРЅРёСЏ;
+2. Р’ С„Р°Р№Р»Рµ _"Config.json"_ СѓРєР°Р·Р°С‚СЊ _"IamToken"_ Рё _"FolderId"_;
+3. Р’ С„Р°Р№Р»Рµ _"ConfigSynthesis.json"_ СѓРєР°Р·Р°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ СЃРёРЅС‚РµР·Р°, РєРѕРЅРІРµСЂС‚Р°С†РёРё (РµСЃР»Рё РЅРµРѕР±С…РѕРґРёРјРѕ) Рё С…СЂР°РЅРµРЅРёСЏ С„Р°Р№Р»РѕРІ СЃРёРЅС‚РµР·Р°.
+4. Р’ С„Р°Р№Р»Рµ _"Texts.txt"_ СѓРєР°Р·Р°С‚СЊ С‚РµРєСЃС‚ СЃРёРЅС‚РµР·Р° (РєР°Р¶РґР°СЏ СЃС‚СЂРѕРєР° РёРґС‘С‚ РѕС‚РґРµР»СЊРЅС‹Рј Р·Р°РїСЂРѕСЃРѕРј);
+5. Р—Р°РїСѓСЃС‚РёС‚СЊ.
 
-=== Взаимодействие с Yandex Cloud ===
-1. Подключиться/зарегистрироваться на https://cloud.yandex.ru/;
-2. Получить идентификатор каталога https://cloud.yandex.ru/docs/resource-manager/operations/folder/get-id;
-3. Получить OAuth-токен https://cloud.yandex.ru/docs/iam/concepts/authorization/oauth-token;
-4. Получить IAM-токен https://cloud.yandex.ru/docs/iam/operations/iam-token/create;
-	- получение IAM-токена из командной строки:
-		curl -d "{\"yandexPassportOauthToken\":\"<OAuth-токен>\"}" "https://iam.api.cloud.yandex.net/iam/v1/tokens"
+#### Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ СЃ Yandex Cloud <br/>
+1. РџРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ/Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ: https://cloud.yandex.ru/;
+2. РџРѕР»СѓС‡РёС‚СЊ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєР°С‚Р°Р»РѕРіР°: https://cloud.yandex.ru/docs/resource-manager/operations/folder/get-id;
+3. РџРѕР»СѓС‡РёС‚СЊ OAuth-С‚РѕРєРµРЅ: https://cloud.yandex.ru/docs/iam/concepts/authorization/oauth-token;
+4. РџРѕР»СѓС‡РёС‚СЊ IAM-С‚РѕРєРµРЅ: https://cloud.yandex.ru/docs/iam/operations/iam-token/create;
+	- РїРѕР»СѓС‡РµРЅРёРµ IAM-С‚РѕРєРµРЅР° РёР· РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё:
+		curl -d "{\"yandexPassportOauthToken\":\"<OAuth-С‚РѕРєРµРЅ>\"}" "https://iam.api.cloud.yandex.net/iam/v1/tokens"
