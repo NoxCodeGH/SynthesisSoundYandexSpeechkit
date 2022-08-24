@@ -1,0 +1,24 @@
+{
+	"YandexTTSData": {
+		"TextType": "text",
+		"Lang": "ru_RU",
+		"Voice": "alena",
+		"Emotion": "neutral",
+		"Speed": 1.0,
+		"Format": "lpcm",
+		"SampleRateHertz": "sr48000"
+	},
+	"ConvertData": {
+		"RateSourceConvert": 48000,
+		"BitsSourceConvert": 16,
+		"ChannelSourceConvert": 1,
+		"RateDestConvert": 22050,
+		"BitsDestConvert": 16,
+		"ChannelDestConvert": 1,
+		"HeaderConvert": true
+	},
+	"WriterData": {
+		"PathDirWriteSound": "C:\\SynthesisSoundYandexSpeechkitConsole\\",
+		"Extension": ".wav"
+	}
+}

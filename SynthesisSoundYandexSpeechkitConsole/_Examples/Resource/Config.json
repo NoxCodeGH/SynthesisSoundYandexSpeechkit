@@ -1,0 +1,8 @@
+{
+  "ConnectYandex": {
+    "AddressYandexSpeechkitTTS": "https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize",
+
+    "IamToken": "",
+    "FolderId": ""
+  }
+}
