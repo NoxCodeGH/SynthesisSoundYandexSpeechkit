@@ -19,5 +19,5 @@
 2. Получить идентификатор каталога: https://cloud.yandex.ru/docs/resource-manager/operations/folder/get-id;
 3. Получить OAuth-токен: https://cloud.yandex.ru/docs/iam/concepts/authorization/oauth-token;
 4. Получить IAM-токен: https://cloud.yandex.ru/docs/iam/operations/iam-token/create;
-	- получение IAM-токена из командной строки:
-		curl -d "{\"yandexPassportOauthToken\":\"<OAuth-токен>\"}" "https://iam.api.cloud.yandex.net/iam/v1/tokens"
+	- получение IAM-токена из командной строки:<br/>
+		_curl -d "{\"yandexPassportOauthToken\":\"<OAuth-токен>\"}" "https://iam.api.cloud.yandex.net/iam/v1/tokens"_
