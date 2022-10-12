@@ -6,8 +6,9 @@ namespace SynthesisSoundYandexSpeechkitConsole
 {
     class Program
     {
-        private const string NAME_FILE_TEXTS = @"Texts.txt";
-        private static readonly string _pathFileTexts = Directory.GetCurrentDirectory() + @$"\{NAME_FILE_TEXTS}";
+        private static readonly string _pathTexts = Path.Combine(Directory.GetCurrentDirectory(), "Texts.txt");
+        private static readonly string _pathConfigSynthesis = Path.Combine(Directory.GetCurrentDirectory(), "ConfigSynthesis.json");
+        private static readonly string _pathConfig = Path.Combine(Directory.GetCurrentDirectory(), "Config.json");
 
         private static Config? _config;
         private static SynthesizeWriterData? _synthesizeWriterData;
@@ -24,7 +25,7 @@ namespace SynthesisSoundYandexSpeechkitConsole
                 if (!Directory.Exists(_synthesizeWriterData.WriterData.PathDirWriteSound))
                     Directory.CreateDirectory(_synthesizeWriterData.WriterData.PathDirWriteSound);
 
-                List<string> texts = File.ReadLines(_pathFileTexts).ToList();
+                List<string> texts = File.ReadLines(_pathTexts).ToList();
 
                 Console.WriteLine($"Будет синтезировано звуковых файлов: {texts.Count}");
                 while (true)
@@ -58,40 +59,37 @@ namespace SynthesisSoundYandexSpeechkitConsole
 
         private static async Task InitConfig()
         {
-            string path = Directory.GetCurrentDirectory() + @"/Config.json";
-            if (!File.Exists(path))
+            if (!File.Exists(_pathConfig))
             {
-                using FileStream configStreamDef = File.Open(path, FileMode.OpenOrCreate);
+                using FileStream configStreamDef = File.Open(_pathConfig, FileMode.OpenOrCreate);
                 await JsonSerializer.SerializeAsync(
                     configStreamDef,
                     new Config() { ConnectYandexTTS = new() }, new JsonSerializerOptions { WriteIndented = true });
             }
 
-            using FileStream configStream = File.OpenRead(path);
+            using FileStream configStream = File.OpenRead(_pathConfig);
             _config = await JsonSerializer.DeserializeAsync<Config>(configStream);
         }
 
         private static async Task InitSynthesizeWriterData()
         {
-            string path = Directory.GetCurrentDirectory() + @"/ConfigSynthesis.json";
-            if (!File.Exists(path))
+            if (!File.Exists(_pathConfigSynthesis))
             {
-                using FileStream configStreamDef = File.Open(path, FileMode.OpenOrCreate);
+                using FileStream configStreamDef = File.Open(_pathConfigSynthesis, FileMode.OpenOrCreate);
                 await JsonSerializer.SerializeAsync(
                     configStreamDef,
                     new SynthesizeWriterData(), new JsonSerializerOptions { WriteIndented = true });
             }
 
-            using FileStream configStream = File.OpenRead(path);
+            using FileStream configStream = File.OpenRead(_pathConfigSynthesis);
             _synthesizeWriterData = await JsonSerializer.DeserializeAsync<SynthesizeWriterData>(configStream);
         }
 
         private static async Task InitTexts()
         {
-            string path = Directory.GetCurrentDirectory() + @"/Texts.txt";
-            if (!File.Exists(path))
+            if (!File.Exists(_pathTexts))
             {
-                using FileStream textsStream = File.OpenWrite(path);
+                using FileStream textsStream = File.OpenWrite(_pathTexts);
 
                 string value = "Пример - \"Текст для синтеза.\"";
                 await textsStream.WriteAsync(Encoding.UTF8.GetBytes(value));
