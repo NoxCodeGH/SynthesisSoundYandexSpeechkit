@@ -50,6 +50,11 @@ namespace SynthesisSoundYandexSpeechkit
                 case Voice.alena:
                     voiceSettings = VoiceSettingsAleana();
                     break;
+                case Voice.john:
+                    voiceSettings = VoiceSettingsJohn();
+                    break;
+                default:
+                    throw new Exception("Голос не поддерживается.");
             }
 
             if (voiceSettings == null)
@@ -119,6 +124,23 @@ namespace SynthesisSoundYandexSpeechkit
                 voiceSettings.Add("emotion", "good");
             else
                 return null;
+
+            return voiceSettings;
+        }
+
+        private Dictionary<string, string>? VoiceSettingsJohn()
+        {
+            Dictionary<string, string> voiceSettings = new()
+            {
+                { "voice", "john" }
+            };
+
+            if (_lang == Lang.en_US)
+                voiceSettings.Add("lang", "en-US");
+            else
+                return null;
+
+            voiceSettings.Add("emotion", "-");
 
             return voiceSettings;
         }
