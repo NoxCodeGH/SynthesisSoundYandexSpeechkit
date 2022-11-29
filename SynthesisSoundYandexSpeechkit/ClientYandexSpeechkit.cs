@@ -21,9 +21,9 @@ namespace SynthesisSoundYandexSpeechkit
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + _iamToken);
             
             var respone = await client.PostAsync(_address, content);
-            if (respone.StatusCode != HttpStatusCode.OK)
-                throw new Exception($"Не удалось выполнить запрос. Код: {respone.StatusCode}");
-
+            if (!respone.IsSuccessStatusCode)
+                throw new Exception($"Не удалось выполнить запрос. Код: {respone.StatusCode} Ошибка: ?");
+            
             return await respone.Content.ReadAsStreamAsync();
         }
     }

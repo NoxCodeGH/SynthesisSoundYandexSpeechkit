@@ -54,6 +54,8 @@ namespace YandexSpeechkit.API.V1
 
     public enum Emotion
     {
+        [EnumMember(Value = "-")]
+        none,
         [EnumMember(Value = "neutral")]
         neutral,
         [EnumMember(Value = "good")]

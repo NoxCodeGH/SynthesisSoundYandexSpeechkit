@@ -1,7 +1,7 @@
 ﻿namespace SynthesisSoundYandexSpeechkit
 {
-    public abstract class RequestPreparation<T>
+    public abstract class RequestPreparation
     {
-        public abstract void Prepare();
+        public abstract Dictionary<string, string> Prepare();
     }
 }

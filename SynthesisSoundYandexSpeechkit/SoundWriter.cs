@@ -2,14 +2,14 @@
 {
     public class SoundWriter
     {
-        public static async void Write(Stream dataSound, string pathDirWriteSound, string nameFile)
+        public static async void Write(Stream data, string dir, string name)
         {
-            if (!Directory.Exists(pathDirWriteSound)) Directory.CreateDirectory(pathDirWriteSound);
+            if (!Directory.Exists(dir)) 
+                Directory.CreateDirectory(dir);
 
-            string path = @$"{pathDirWriteSound}/{nameFile}";
-            using FileStream fileStream = File.Open(path, FileMode.OpenOrCreate);
-            dataSound.Position = 0;
-            await dataSound.CopyToAsync(fileStream);
+            string path = @$"{dir}/{name}";
+            using FileStream file = File.Open(path, FileMode.OpenOrCreate);
+            await data.CopyToAsync(file);
         }
     }
 }

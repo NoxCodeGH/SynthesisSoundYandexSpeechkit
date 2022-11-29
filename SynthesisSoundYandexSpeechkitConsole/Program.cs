@@ -11,7 +11,7 @@ namespace SynthesisSoundYandexSpeechkitConsole
         private static readonly string _pathConfig = Path.Combine(Directory.GetCurrentDirectory(), "Config.json");
 
         private static Config? _config;
-        private static SynthesizeWriterData? _synthesizeWriterData;
+        private static OptionsSynthesize? _synthesizeWriterData;
 
         public static async Task Main()
         {
@@ -22,8 +22,8 @@ namespace SynthesisSoundYandexSpeechkitConsole
                 if (_config == null) throw new Exception("Файл конфигурации приложения прочитан с ошибкой.");
                 if (_synthesizeWriterData == null) throw new Exception("Файл параметров синтезатора прочитан с ошибкой.");
 
-                if (!Directory.Exists(_synthesizeWriterData.WriterData.PathDirWriteSound))
-                    Directory.CreateDirectory(_synthesizeWriterData.WriterData.PathDirWriteSound);
+                if (!Directory.Exists(_synthesizeWriterData.OptionsWriter.Path))
+                    Directory.CreateDirectory(_synthesizeWriterData.OptionsWriter.Path);
 
                 List<string> texts = File.ReadLines(_pathTexts).ToList();
 
@@ -78,11 +78,11 @@ namespace SynthesisSoundYandexSpeechkitConsole
                 using FileStream configStreamDef = File.Open(_pathConfigSynthesis, FileMode.OpenOrCreate);
                 await JsonSerializer.SerializeAsync(
                     configStreamDef,
-                    new SynthesizeWriterData(), new JsonSerializerOptions { WriteIndented = true });
+                    new OptionsSynthesize(), new JsonSerializerOptions { WriteIndented = true });
             }
 
             using FileStream configStream = File.OpenRead(_pathConfigSynthesis);
-            _synthesizeWriterData = await JsonSerializer.DeserializeAsync<SynthesizeWriterData>(configStream);
+            _synthesizeWriterData = await JsonSerializer.DeserializeAsync<OptionsSynthesize>(configStream);
         }
 
         private static async Task InitTexts()
